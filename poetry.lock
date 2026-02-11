@@ -2918,21 +2918,21 @@ pytket = ">=2.9.3"
 
 [[package]]
 name = "pytket-qiskit"
-version = "0.73.0"
-description = "Extension for pytket, providing translation to and from the Qiskit framework"
+version = "0.77.0"
+description = "Extension for pytket, providing translation to and from the Qiskit."
 optional = false
-python-versions = ">=3.10"
+python-versions = "<4.0,>=3.10"
 groups = ["main"]
 files = [
-    {file = "pytket_qiskit-0.73.0-py3-none-any.whl", hash = "sha256:2f2aafa6f008796c172647aea700674ece4515bc8e2f4dc4de0baef38a908d35"},
+    {file = "pytket_qiskit-0.77.0-py3-none-any.whl", hash = "sha256:257bc937d80da6e2aaea4ee3a9d8b211e049dc9bfa9ef8a9e93c07f70daad326"},
 ]
 
 [package.dependencies]
 numpy = ">=1.26.4"
-pytket = ">=2.10.3"
-qiskit = ">=2.2.3"
+pytket = ">=2.11.0"
+qiskit = ">=2.3"
 qiskit-aer = ">=0.17.1"
-qiskit-ibm-runtime = ">=0.42.0"
+qiskit-ibm-runtime = ">=0.43.1"
 symengine = ">=0.11"
 
 [[package]]
@@ -3179,20 +3179,20 @@ cffi = {version = "*", markers = "implementation_name == \"pypy\""}
 
 [[package]]
 name = "qiskit"
-version = "2.2.3"
+version = "2.3.0"
 description = "An open-source SDK for working with quantum computers at the level of extended quantum circuits, operators, and primitives."
 optional = false
-python-versions = ">=3.9"
+python-versions = ">=3.10"
 groups = ["main"]
 files = [
-    {file = "qiskit-2.2.3-cp39-abi3-macosx_10_12_x86_64.whl", hash = "sha256:23c4b023f8b32152624fce5f980edb8af4817559495187ef71758f8bb75c531a"},
-    {file = "qiskit-2.2.3-cp39-abi3-macosx_11_0_arm64.whl", hash = "sha256:46585ceacc4c8eab942c7d32a8a95263a8a1769c275d72d13c81fb1390c38d2c"},
-    {file = "qiskit-2.2.3-cp39-abi3-manylinux2014_aarch64.manylinux_2_17_aarch64.whl", hash = "sha256:3dc5071cd8c4e7a7b9685557dada82a125bcf9eb319e8c2b9d86ecd0b524baa9"},
-    {file = "qiskit-2.2.3-cp39-abi3-manylinux2014_ppc64le.manylinux_2_17_ppc64le.whl", hash = "sha256:f6f20fc9b98564154e1021161fe71e3f61e60cbe3f41eb5b0cad8107c970e8af"},
-    {file = "qiskit-2.2.3-cp39-abi3-manylinux2014_s390x.manylinux_2_17_s390x.whl", hash = "sha256:edfcc6fb3c0a28f5970b4272dc677bc7424ca1986eafd4d49452b09461833126"},
-    {file = "qiskit-2.2.3-cp39-abi3-manylinux2014_x86_64.manylinux_2_17_x86_64.whl", hash = "sha256:75acf702866a68be36870400d845d0775e7baa5397bf880bc56864ee105cbe93"},
-    {file = "qiskit-2.2.3-cp39-abi3-win_amd64.whl", hash = "sha256:80dbf57bc503c54dde91918fdece0e702def5b685892821eab0e584a071cedda"},
-    {file = "qiskit-2.2.3.tar.gz", hash = "sha256:ec597bf021fe5fa5e44600b142e6de00fc873207dfbd750d4e1cf19a1a905592"},
+    {file = "qiskit-2.3.0-cp310-abi3-macosx_10_12_x86_64.whl", hash = "sha256:bfeba21f216f64b051f9ac98653e9999d4c1bcb4f328aca06ad059aaef86586b"},
+    {file = "qiskit-2.3.0-cp310-abi3-macosx_11_0_arm64.whl", hash = "sha256:5f29f3b6a2b5738463bc667ddb2bcc79a83fb434ab9a8033487b64a399f71bef"},
+    {file = "qiskit-2.3.0-cp310-abi3-manylinux2014_aarch64.manylinux_2_17_aarch64.whl", hash = "sha256:b437262a14ab961703153f79f38de5fde408601b0eda1f9c34b57498c912ef33"},
+    {file = "qiskit-2.3.0-cp310-abi3-manylinux2014_ppc64le.manylinux_2_17_ppc64le.whl", hash = "sha256:7c413dace7a9b1d30bbbfeb2f90c4564dfcf6ed3c0744e026d4aca84f8fbd2bb"},
+    {file = "qiskit-2.3.0-cp310-abi3-manylinux2014_s390x.manylinux_2_17_s390x.whl", hash = "sha256:ae0b1ec4c24ff8867599a5e8a46efaaf6d5477d1c4533427b7ae516054f52b2f"},
+    {file = "qiskit-2.3.0-cp310-abi3-manylinux2014_x86_64.manylinux_2_17_x86_64.whl", hash = "sha256:24fd70ee3ac47fe029096e39b1c39abf3e7f145c723df90f9600468099c12aa4"},
+    {file = "qiskit-2.3.0-cp310-abi3-win_amd64.whl", hash = "sha256:8679a426725785701629f0af905a7a5b6bc25b0dcd7fe4f4c9f8be63d89e832c"},
+    {file = "qiskit-2.3.0.tar.gz", hash = "sha256:e0a00c6681b8d04171c5cdb928837d992676f8aa4a07c390d446e54babaf6c1e"},
 ]
 
 [package.dependencies]
@@ -3250,6 +3250,10 @@ files = [
     {file = "qiskit_aer-0.17.2-cp313-cp313-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:2749e6027f67e1f6b9d328d2dda2d4bf926aebd3653edc62e94c45d8237294d8"},
     {file = "qiskit_aer-0.17.2-cp313-cp313-win32.whl", hash = "sha256:c3ffd40a64bfcf8a6d10cbfdca8734d49ec57502fd70dc63aae9ed3819249dd6"},
     {file = "qiskit_aer-0.17.2-cp313-cp313-win_amd64.whl", hash = "sha256:b38c5dfdc6cb2bacac78a47b0df8247123051564007fdecedb8ffbd4256f0f09"},
+    {file = "qiskit_aer-0.17.2-cp314-cp314-macosx_10_15_x86_64.whl", hash = "sha256:c282b9b65f2b011d740e76b0ab44201c70d8d48894ddc12e22442acbb81cc7eb"},
+    {file = "qiskit_aer-0.17.2-cp314-cp314-macosx_11_0_arm64.whl", hash = "sha256:193de16895ee989a5259331d0f1b1dcad606d506e5e831683ff165e82851a7ac"},
+    {file = "qiskit_aer-0.17.2-cp314-cp314-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl", hash = "sha256:b84564d563fb06adb454f3528dcc343be327c30cbd5f9f40aec7efd21d241e55"},
+    {file = "qiskit_aer-0.17.2-cp314-cp314-win_amd64.whl", hash = "sha256:5d7b22dd945df4c69d57e966efb549cf9186055e5f32c649a91b7dd1eb133f07"},
     {file = "qiskit_aer-0.17.2-cp39-cp39-macosx_10_9_x86_64.whl", hash = "sha256:58078b26f8ae29c4189eb373267a651f0d8046449faead786a69c3f33e7e5672"},
     {file = "qiskit_aer-0.17.2-cp39-cp39-macosx_11_0_arm64.whl", hash = "sha256:c752cf5a650a22763eeccc9cd13a90ab10d7012612b5729056e1dcf2d92c1f5a"},
     {file = "qiskit_aer-0.17.2-cp39-cp39-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:d8e7414a1a308c13bfb126df34fec4ee7c717c6d9050452aebced2b3920515e8"},
@@ -3297,14 +3301,14 @@ visualization = ["ipython (>=5.0.0)", "ipyvue (>=1.8.5)", "ipyvuetify (>=1.1)", 
 
 [[package]]
 name = "qiskit-ibm-runtime"
-version = "0.42.0"
+version = "0.45.0"
 description = "IBM Quantum client for Qiskit Runtime."
 optional = false
-python-versions = ">=3.9"
+python-versions = ">=3.10"
 groups = ["main"]
 files = [
-    {file = "qiskit_ibm_runtime-0.42.0-py3-none-any.whl", hash = "sha256:4abf5a88c8506b0bcb23fee5ca99f68a148efa6ccdb252e7e14a53745910adb9"},
-    {file = "qiskit_ibm_runtime-0.42.0.tar.gz", hash = "sha256:125c08e3a2e762ab23b15f1e2c21fdb15a2bfe63e2ac35b019001f139bb2d4f5"},
+    {file = "qiskit_ibm_runtime-0.45.0-py3-none-any.whl", hash = "sha256:dff7905492deac5c66be48a457e561de41aac7033762559e06eb92ffd7f5e24e"},
+    {file = "qiskit_ibm_runtime-0.45.0.tar.gz", hash = "sha256:54b29d6e5201b038015f20e30ab90f846a3233a53e758f405a4c5a556fadb0bb"},
 ]
 
 [package.dependencies]
@@ -3313,13 +3317,13 @@ numpy = ">=1.13"
 packaging = "*"
 pydantic = ">=2.5.0"
 python-dateutil = ">=2.8.0"
-qiskit = ">=1.4.1"
-requests = ">=2.19"
+qiskit = ">=2.0.0"
+requests = ">=2.19,<2.32.2 || >2.32.2"
 requests-ntlm = ">=1.1.0"
 urllib3 = ">=1.21.1"
 
 [package.extras]
-common = ["black (>=24.1,<25.0)", "coverage (>=6.3)", "jupyter", "matplotlib (>=2.1)", "mypy (==0.931)", "nbconvert (>=5.3.1)", "nbformat (>=4.4.0)", "nbqa (==1.5.3)", "pproxy (==2.7.8)", "pylatexenc", "pylint (==3.0.0)", "qiskit-aer (>=0.17.0)", "scikit-learn", "scipy (>=1.0)", "setuptools"]
+common = ["black (>=24.1,<25.0)", "coverage (>=6.3)", "jupyter", "matplotlib (>=2.1)", "mypy (==1.19.0)", "nbconvert (>=5.3.1)", "nbformat (>=4.4.0)", "nbqa (==1.5.3)", "pproxy (==2.7.8)", "pylatexenc", "pylint (==3.0.0)", "qiskit-aer (>=0.17.0)", "ruff (>=0.14.10,<0.15.0)", "scikit-learn", "scipy (>=1.0)", "setuptools"]
 dev = ["qiskit-ibm-runtime[common]", "qiskit-ibm-runtime[documentation]", "qiskit-ibm-runtime[test]", "qiskit-ibm-runtime[visualization]"]
 documentation = ["Sphinx (>=6)", "jupyter-sphinx", "nbsphinx", "packaging", "sphinx-autodoc-typehints (<=1.19.2)", "sphinx-automodapi", "sphinxcontrib-katex (==0.9.9)"]
 test = ["ddt (>=1.2.0,!=1.4.0,!=1.4.3)"]
@@ -4589,4 +4593,4 @@ tests = ["mypy", "pytest", "pytest-cov", "qiskit-ibm-provider", "ruff"]
 [metadata]
 lock-version = "2.1"
 python-versions = ">=3.10,<3.14"
-content-hash = "a7f43c7550aa079cc82218853b5654d31552537399ed583846b4a17672a5bf0d"
+content-hash = "70782897135707bb05f65154b2962c1d9e101f2136fbaab24167ccfe955b8a71"
