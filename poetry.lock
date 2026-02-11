@@ -2883,20 +2883,20 @@ quantum-pecos = {version = ">=0.7.0.dev0", extras = ["wasmtime"]}
 
 [[package]]
 name = "pytket-phir"
-version = "0.10.0"
+version = "0.10.1"
 description = "A circuit analyzer and translator from pytket to PHIR"
 optional = false
-python-versions = "<3.14,>=3.10"
+python-versions = "<3.15,>=3.10"
 groups = ["main"]
 files = [
-    {file = "pytket_phir-0.10.0-py3-none-any.whl", hash = "sha256:f96537cb0d2e35f06115ef32ace84b9ff849febfb45562d3e649ed47dacd04be"},
-    {file = "pytket_phir-0.10.0.tar.gz", hash = "sha256:2ff9aa35fad16e64663ff5afbc1b1378decfa50bec2a92be2eb989a7879182b4"},
+    {file = "pytket_phir-0.10.1-py3-none-any.whl", hash = "sha256:fa01736adc9b5120abc0407e4d2a9cad1c55e8f1f7532a16e99ef76c74844851"},
+    {file = "pytket_phir-0.10.1.tar.gz", hash = "sha256:8126a8b0c7889205f98c83952f678e62fc71e271ee09888a94fad75c2fab6b4b"},
 ]
 
 [package.dependencies]
 phir = ">=0.3.3"
 pytket = ">=2.0.0"
-wasmtime = ">=19.0.0"
+wasmtime = ">=29.0.0"
 
 [package.extras]
 phirc = ["projectq (>=0.8.0)", "quantum-pecos (>=0.6.0.dev2)"]
@@ -2937,24 +2937,25 @@ symengine = ">=0.11"
 
 [[package]]
 name = "pytket-quantinuum"
-version = "0.56.2"
+version = "0.57.0"
 description = "Extension for pytket, providing access to Quantinuum backends"
 optional = false
-python-versions = ">=3.10"
+python-versions = "<4.0,>=3.10"
 groups = ["main"]
 files = [
-    {file = "pytket_quantinuum-0.56.2-py3-none-any.whl", hash = "sha256:3561f62a1b09ef1c39901ca8a9126aad5063ca243c5a4f1fa479072d6881b59c"},
+    {file = "pytket_quantinuum-0.57.0-py3-none-any.whl", hash = "sha256:75fd8336ee97796b4bcf15f3f0243e38b2055a02fd7975ea50a18eedb885700d"},
 ]
 
 [package.dependencies]
 numpy = ">=1.26.4"
-pytket = ">=2.9.3"
+pytket = ">=2.11.0"
 pytket-pecos = {version = ">=0.2.2,<0.3.0", optional = true, markers = "extra == \"pecos\""}
+pytket-phir = {version = ">=0.10.1,<0.11.0", optional = true, markers = "extra == \"pecos\""}
 pytket-qir = ">=0.25.0"
 quantum-pecos = {version = "0.7.0.dev4", optional = true, markers = "extra == \"pecos\""}
 
 [package.extras]
-pecos = ["pytket-pecos (>=0.2.2,<0.3.0)", "quantum-pecos (==0.7.0.dev4)"]
+pecos = ["pytket-pecos (>=0.2.2,<0.3.0)", "pytket-phir (>=0.10.1,<0.11.0)", "quantum-pecos (==0.7.0.dev4)"]
 
 [[package]]
 name = "pywin32"
@@ -4593,4 +4594,4 @@ tests = ["mypy", "pytest", "pytest-cov", "qiskit-ibm-provider", "ruff"]
 [metadata]
 lock-version = "2.1"
 python-versions = ">=3.10,<3.14"
-content-hash = "70782897135707bb05f65154b2962c1d9e101f2136fbaab24167ccfe955b8a71"
+content-hash = "fa9b3ea9dccd53587bf082dd187e2a51d415110ec6fa507a5761fae85c2eacdc"
