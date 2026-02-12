@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.8.6](https://github.com/Quantinuum/Qermit/compare/v0.8.5...v0.8.6) (2026-02-12)
+
+
+### Miscellaneous Chores
+
+* release 0.8.6 ([dde1779](https://github.com/Quantinuum/Qermit/commit/dde177951b39ac47f0f4c20e3fe3c70701b4c405))
+
 ## [0.8.5](https://github.com/CQCL/Qermit/compare/v0.8.4...v0.8.5) (2025-11-14)
 
 
