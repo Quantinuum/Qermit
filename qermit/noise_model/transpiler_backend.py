@@ -4,6 +4,7 @@ from collections import Counter
 from typing import Dict, Iterable, Iterator, List, Optional, Sequence, Tuple
 
 from pytket import Bit, Circuit
+from pytket.backends.backend import Backend
 from pytket.backends.backendresult import BackendResult
 from pytket.backends.resulthandle import ResultHandle
 from pytket.extensions.qiskit import AerBackend
@@ -29,7 +30,6 @@ class TranspilerBackend:
     max_batch_size: int
     result_dict: Dict[ResultHandle, BackendResult]
     n_cores: int
-    backend = AerBackend()
 
     def __init__(
         self,
@@ -37,6 +37,7 @@ class TranspilerBackend:
         result_dict: Dict[ResultHandle, BackendResult] = {},
         max_batch_size: int = 1000,
         n_cores: int = 1,
+        backend: Backend = AerBackend(),
     ):
         """Initialisation method.
 
@@ -57,6 +58,7 @@ class TranspilerBackend:
         self.max_batch_size = max_batch_size
         self.result_dict = result_dict
         self.n_cores = n_cores
+        self.backend = backend
 
     @property
     def _uses_lightsabre(self) -> bool:
