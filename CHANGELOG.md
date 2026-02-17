@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.9.0](https://github.com/Quantinuum/Qermit/compare/v0.8.6...v0.9.0) (2026-02-17)
+
+
+### Features
+
+* Allow Quantinuum as transpiler backend ([#358](https://github.com/Quantinuum/Qermit/issues/358)) ([4300a04](https://github.com/Quantinuum/Qermit/commit/4300a047ee3e02cb40238b1b831131ea22ab6888))
+
 ## [0.8.6](https://github.com/Quantinuum/Qermit/compare/v0.8.5...v0.8.6) (2026-02-12)
 
 
