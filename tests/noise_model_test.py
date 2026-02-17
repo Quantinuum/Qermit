@@ -5,8 +5,9 @@ from itertools import product
 
 import numpy as np
 import pytest
-from pytket import Circuit, OpType
+from pytket import Bit, Circuit, OpType
 from pytket.circuit import Op, Qubit
+from pytket.extensions.quantinuum import QuantinuumAPIOffline, QuantinuumBackend
 from pytket.pauli import Pauli, QubitPauliString, QubitPauliTensor
 
 from qermit.noise_model import (
@@ -1015,6 +1016,93 @@ def test_noise_model_scaling() -> None:
     ) < 10 ** (-6)
 
 
+def test_quantinuum_transpiler_backend() -> None:
+    circuit = Circuit(2)
+    circuit.ZZPhase(0.1, 0, 1)
+    circuit.ZZPhase(0.1, 0, 1)
+    circuit.ZZPhase(0.1, 0, 1)
+    circuit.ZZPhase(0.1, 0, 1)
+    circuit.ZZPhase(0.1, 0, 1)
+    circuit.ZZPhase(0.1, 0, 1)
+    circuit.ZZPhase(0.1, 0, 1)
+    circuit.ZZPhase(0.1, 0, 1)
+    circuit.ZZPhase(0.1, 0, 1)
+    circuit.ZZPhase(0.1, 0, 1)
+
+    bit_list = [
+        Bit(name="my bit", index=0),
+        Bit(name="my bit", index=1),
+        Bit(name="my bit", index=2),
+    ]
+    circuit.add_bit(id=bit_list[0])
+    circuit.add_bit(id=bit_list[1])
+    circuit.add_bit(id=bit_list[2])
+
+    circuit.add_c_setbits(values=[True], args=[bit_list[0]])
+    circuit.add_clexpr_from_logicexp(bit_list[0] ^ bit_list[1], [bit_list[2]])
+
+    circuit.X(1, condition=bit_list[2])
+
+    circuit.measure_all()
+
+    noise_rate = 0
+
+    error_distribution = ErrorDistribution(
+        distribution={
+            (
+                Pauli.X,
+                Pauli.I,
+            ): noise_rate,
+            (
+                Pauli.I,
+                Pauli.X,
+            ): noise_rate,
+        },
+        rng=np.random.default_rng(seed=2),
+    )
+
+    noise_model = NoiseModel(noise_model={OpType.ZZPhase: error_distribution})
+
+    transpiler = PauliErrorTranspile(noise_model=noise_model)
+
+    backend = QuantinuumBackend(
+        device_name="H2-1LE",
+        api_handler=QuantinuumAPIOffline(),  # type: ignore
+    )
+    n_shots = 100
+    transpiler_backend = TranspilerBackend(transpiler=transpiler, backend=backend)
+    result = transpiler_backend.run_circuit(circuit=circuit, n_shots=n_shots)
+    assert (
+        result.get_counts(cbits=[Bit(0), Bit(1)] + bit_list)[(0, 1, 1, 0, 1)] == n_shots
+    )
+
+    noise_rate = 0.005
+
+    error_distribution = ErrorDistribution(
+        distribution={
+            (
+                Pauli.X,
+                Pauli.I,
+            ): noise_rate,
+            (
+                Pauli.I,
+                Pauli.X,
+            ): noise_rate,
+        },
+        rng=np.random.default_rng(seed=2),
+    )
+
+    noise_model = NoiseModel(noise_model={OpType.ZZPhase: error_distribution})
+
+    transpiler = PauliErrorTranspile(noise_model=noise_model)
+
+    transpiler_backend = TranspilerBackend(transpiler=transpiler, backend=backend)
+    result = transpiler_backend.run_circuit(circuit=circuit, n_shots=n_shots)
+    assert (
+        result.get_counts(cbits=[Bit(0), Bit(1)] + bit_list)[(0, 1, 1, 0, 1)] < n_shots
+    )
+
+
 if __name__ == "__main__":
     test_is_measureable()
     test_to_from_qps()
@@ -1035,3 +1123,4 @@ if __name__ == "__main__":
     test_transpiler_backend()
     test_error_distribution_post_select()
     test_noise_model_logical_error_propagation()
+    test_quantinuum_transpiler_backend()
