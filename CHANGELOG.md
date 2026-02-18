@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.9.2](https://github.com/Quantinuum/Qermit/compare/v0.9.1...v0.9.2) (2026-02-18)
+
+
+### Bug Fixes
+
+* Create py.typed ([4d371e8](https://github.com/Quantinuum/Qermit/commit/4d371e86ef590b1d328e1ae4c866b754b0c572e7))
+* Delete py.typed ([ec99b21](https://github.com/Quantinuum/Qermit/commit/ec99b21a073ebd0e8965cc87a93988b302ea050b))
+
 ## [0.9.1](https://github.com/Quantinuum/Qermit/compare/v0.9.0...v0.9.1) (2026-02-18)
 
 
