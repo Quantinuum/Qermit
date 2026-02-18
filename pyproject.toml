@@ -13,6 +13,9 @@ authors = [
 ]
 readme = "README.md"
 
+[tool.setuptools.package-data]
+"pkgname" = ["py.typed"]
+
 [tool.poetry.dependencies]
 python = ">=3.10,<3.14"
 matplotlib = ">=3.8,<3.11"
