@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.9.3](https://github.com/Quantinuum/Qermit/compare/v0.9.2...v0.9.3) (2026-02-25)
+
+
+### Miscellaneous Chores
+
+* release 0.9.3 ([1d150a2](https://github.com/Quantinuum/Qermit/commit/1d150a20682f5d21a16ab54f280ca5d4e05e6b56))
+
 ## [0.9.2](https://github.com/Quantinuum/Qermit/compare/v0.9.1...v0.9.2) (2026-02-18)
 
 
