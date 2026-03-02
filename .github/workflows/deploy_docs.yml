@@ -39,7 +39,7 @@ jobs:
           cd docs
           ./build-docs.sh
       - name: Save documentation
-        uses: actions/upload-artifact@v6
+        uses: actions/upload-artifact@v7
         with:
           name: docs_html
           path: docs/build
