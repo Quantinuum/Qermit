@@ -29,7 +29,7 @@ pytest-cov = { version = ">=6.0,<7.1", optional = true }
 qiskit-ibm-provider = { version = ">=0.11,<0.12", optional = true }
 ruff = { version = ">=0.8,<0.16", optional = true }
 furo = { version = ">=2024.8,<2025.13", optional = true }
-myst-nb = { version = ">=1.1,<1.4", optional = true }
+myst-nb = { version = ">=1.1,<1.5", optional = true }
 sphinx-autodoc-typehints = { version = ">=2.5,<3.3", optional = true }
 jupyter-sphinx = { version = ">=0.5,<0.6", optional = true}
 
