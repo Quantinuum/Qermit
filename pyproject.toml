@@ -25,7 +25,7 @@ pytket-quantinuum = { extras = ["pecos"], version = ">=0.41,<0.59"}
 pytest = { version = ">=8.1,<9.1", optional = true }
 mypy = { version = ">=1.9,<1.20", optional = true }
 sphinx = { version = ">=8.1,<8.3", optional = true }
-pytest-cov = { version = ">=6.0,<7.1", optional = true }
+pytest-cov = { version = ">=6.0,<7.2", optional = true }
 qiskit-ibm-provider = { version = ">=0.11,<0.12", optional = true }
 ruff = { version = ">=0.8,<0.16", optional = true }
 furo = { version = ">=2024.8,<2025.13", optional = true }
