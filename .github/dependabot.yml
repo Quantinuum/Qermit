@@ -1,6 +1,7 @@
 version: 2
 updates:
   - package-ecosystem: pip
+    open-pull-requests-limit: 0
     directory: "/" # Location of package manifests
     schedule:
       interval: "daily"
@@ -9,6 +10,7 @@ updates:
       # Use a conventional commit tag
       prefix: "ci(py-deps)"
   - package-ecosystem: github-actions
+    open-pull-requests-limit: 0
     directory: ".github/workflows"
     schedule:
       interval: "daily"
