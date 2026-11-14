@@ -174,6 +174,7 @@ mitex.get_task_graph()
 :hidden:
 
 manual/manual_index.rst
+changelog.md
 ```
 
 
