@@ -72,20 +72,20 @@ def clifford_canonical_F(
 
     :param pauli_layer: Description of which Pauli gate should act on each qubits. This is an element of {0,1,2,3}^n
     with 0 -> I, 1->X, 2->Y, 3->Z.
-    :param gamma: Describes on which qubits CX acts. In particular the circuit contains CX_{i,j} if
-    gamma[i][j]=1. The gates are ordered such the control qubit index increases with time.
-    :param delta: Describes on which qubits CZ acts. In particular the circuit contains CX_{i,j} if
-    delta[i][j]=1. The gates are ordered such the control qubit index increases with time. The circuit include S_i
-    if delta[i][i]=1.
+    :param gamma: Symmetric phase matrix. The circuit contains CZ_{i,j} for i < j
+    if gamma[i][j]=1, and S_i if gamma[i][i]=1.
+    :param delta: Lower-triangular binary matrix with unit diagonal. The circuit
+    contains CX_{i,j} for i < j if delta[j][i]=1. Control indices decrease with
+    time so that the computational basis map is x -> delta x over GF(2).
     :return: A Hadamard free Clifford circuit.
     """
 
     circ = Circuit(len(pauli_layer))
 
     # Add layer of CX gates
-    for j in range(len(delta)):
-        for i in range(j):
-            if delta[i][j]:
+    for i in reversed(range(len(delta))):
+        for j in range(i + 1, len(delta)):
+            if delta[j][i]:
                 circ.CX(i, j, opgroup="Clifford 2")
 
     # Add layer of CZ gates
@@ -101,11 +101,11 @@ def clifford_canonical_F(
 
     # Add Pauli gate
     for i, gate in enumerate(pauli_layer):
-        if gate == 0:
+        if gate == 1:
             circ.X(i, opgroup="Clifford 1")
-        elif gate == 1:
-            circ.Y(i, opgroup="Clifford 1")
         elif gate == 2:
+            circ.Y(i, opgroup="Clifford 1")
+        elif gate == 3:
             circ.Z(i, opgroup="Clifford 1")
 
     return circ
@@ -213,7 +213,7 @@ def random_clifford_circ(n_qubits: int, **kwargs) -> Circuit:
 
     # Append Clifford gate. Here the Pauli gates are assigned at random.
     cliff_circ = clifford_canonical_F(
-        [np.random.randint(2) for _ in range(n_qubits)], Gamma2, Delta2
+        [np.random.randint(4) for _ in range(n_qubits)], Gamma2, Delta2
     )
     circ = circ.add_circuit(cliff_circ, [i for i in range(n_qubits)], [])
 
