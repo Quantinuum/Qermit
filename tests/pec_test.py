@@ -269,7 +269,13 @@ def test_learn_quasi_probs_task_gen():
     return
 
 
-def test_gen_get_clifford_training_set():
+@pytest.mark.parametrize("identity_replacements", [False, True])
+def test_gen_get_clifford_training_set(monkeypatch, identity_replacements):
+    if identity_replacements:
+        monkeypatch.setattr(
+            "qermit.probabilistic_error_cancellation.pec_learning_based.random_clifford_circ",
+            lambda n_qubits: Circuit(n_qubits),
+        )
     be = AerBackend()
 
     num_rand_cliff = 4
@@ -309,12 +315,23 @@ def test_gen_get_clifford_training_set():
         # Check that the output circuit is Clifford circuit
         assert CliffordCircuitPredicate().verify(output_circuit)
 
-        # Check that all Computing gates have been replaced with Clifford gates
-        for input_circuit_command, output_circuit_command in zip(
-            input_circuit.get_commands(), output_circuit.get_commands()
-        ):
-            if "Computing" in input_circuit_command.opgroup:
-                assert "Clifford" in output_circuit_command.opgroup
+        # Identity replacements can disappear when their boxes are decomposed,
+        # so input/output command positions need not correspond.
+        assert all(
+            "Computing" not in command.opgroup
+            for command in output_circuit.get_commands()
+        )
+        input_frames = [
+            command
+            for command in input_circuit.to_dict()["commands"]
+            if "Frame" in command["opgroup"]
+        ]
+        output_frames = [
+            command
+            for command in output_circuit.to_dict()["commands"]
+            if "Frame" in command["opgroup"]
+        ]
+        assert output_frames == input_frames
 
 
 def test_gen_get_noisy_circuits():
