@@ -411,9 +411,12 @@ def gen_obs_exp_grid_gen_task() -> MitTask:
                 circ = obs_exp.AnsatzCircuit.Circuit.copy()
                 anz_circ = AnsatzCircuit(circ, obs_exp.AnsatzCircuit.Shots, sym_dict)
 
-                obs_exp_grid[grid_point] = ObservableExperiment(
-                    anz_circ, obs_exp.ObservableTracker
-                )
+                # Measurement preparation mutates the tracker and caches its
+                # parameter bindings. Each grid point needs an independent copy.
+                tracker = deepcopy(obs_exp.ObservableTracker)
+                for measurement in tracker.measurement_circuits:
+                    measurement._symbols._symbolic_map.update(sym_map)
+                obs_exp_grid[grid_point] = ObservableExperiment(anz_circ, tracker)
 
             obs_exp_grid_list.append(obs_exp_grid)
 
@@ -547,8 +550,8 @@ def gen_spectral_filtering_MitEx(backend: Backend, n_vals: int, **kwargs) -> Mit
     :param backend: Backend on which all experiments are run.
     :param n_vals: The number of values each symbol should take. Each symbol
         will take n_vals equally spaced values in the range
-        :math:`[0, 2 U+03C0]`. The circuit will be evaluate at every
-        permutation of the symbols evaluated at these points, giving a grid
+        :math:`[0, 2)` in half-turn units. The circuit is evaluated at every
+        combination of the symbols evaluated at these points, giving a grid
         of circuit evaluations.
 
     :key signal_filter: Method for filtering the landscape of circuit
