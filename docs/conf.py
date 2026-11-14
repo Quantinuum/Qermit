@@ -14,7 +14,7 @@
 # import sys
 # sys.path.insert(0, os.path.abspath('.'))
 
-import pkg_resources
+from importlib.metadata import version as package_version
 
 # -- Project information -----------------------------------------------------
 
@@ -23,9 +23,9 @@ copyright = "2023 Quantinuum"
 author = "Quantinuum"
 
 # The short X.Y version
-version = str(pkg_resources.get_distribution("Qermit").version)
+version = package_version("Qermit")
 # The full version, including alpha/beta/rc tags
-release = str(pkg_resources.get_distribution("Qermit").version)
+release = version
 
 
 # -- General configuration ---------------------------------------------------
